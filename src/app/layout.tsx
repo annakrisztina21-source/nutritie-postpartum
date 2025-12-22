@@ -19,7 +19,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: siteConfig.brandName,
   description: siteConfig.description,
-  keywords: siteConfig.seoKeywords,
+  keywords: [...siteConfig.seoKeywords],
   openGraph: {
     title: siteConfig.brandName,
     description: siteConfig.description,
