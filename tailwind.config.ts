@@ -9,12 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FFF7F2",
-        primary: "#E67E5F",
-        secondary: "#2E6F6A",
-        accent: "#F2C14E",
-        textPrimary: "#1F2937",
-        textSecondary: "#6B7280",
+        background: "#FAFAFA",
+        primary: "#FF6B9D",
+        'primary-dark': "#E85A8C",
+        secondary: "#6366F1",
+        accent: "#F59E0B",
+        textPrimary: "#0F172A",
+        textSecondary: "#64748B",
         whatsapp: "#25D366",
       },
       fontFamily: {
