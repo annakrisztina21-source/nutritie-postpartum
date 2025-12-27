@@ -4,20 +4,24 @@
 
 @layer base {
   :root {
-    /* Ultra-Modern 2025 Color System */
-    --bg-primary: 250 250 250;
-    --bg-secondary: 255 255 255;
-    --accent-pink: 236 72 153;
-    --accent-purple: 147 51 234;
-    --accent-blue: 59 130 246;
-    --text-primary: 15 23 42;
-    --text-secondary: 100 116 139;
-    --border: 226 232 240;
+    /* Elegant Color Palette */
+    --rose-50: 255 241 242;
+    --rose-100: 255 228 230;
+    --rose-200: 254 205 211;
+    --rose-400: 251 113 133;
+    --rose-500: 244 63 94;
+    --rose-600: 225 29 72;
+    --mauve-50: 250 245 255;
+    --mauve-100: 243 232 255;
+    --mauve-500: 168 85 247;
+    --mauve-600: 147 51 234;
+    --cream: 253 251 247;
+    --charcoal: 30 30 32;
+    --warm-gray: 115 115 115;
   }
 
   * {
     box-sizing: border-box;
-    border-color: rgb(226 232 240);
   }
 
   html {
@@ -27,226 +31,248 @@
   }
 
   body {
-    background-color: white;
-    color: rgb(15 23 42);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: rgb(var(--cream));
+    color: rgb(var(--charcoal));
+    line-height: 1.7;
+  }
+
+  /* Elegant Typography */
+  h1, h2, h3, h4 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  p {
+    color: rgb(var(--warm-gray));
   }
 }
 
 @layer components {
-  /* Ultra-Modern Card with 3D effect */
-  .card-3d {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1.5rem;
-    background-color: white;
-    border: 1px solid rgb(226 232 240 / 0.8);
-    box-shadow:
-      0 1px 2px 0 rgb(0 0 0 / 0.05),
-      0 0 0 1px rgb(0 0 0 / 0.02);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
+  /* Elegant Card */
+  .card-elegant {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .card-3d:hover {
-    transform: translateY(-8px) rotateX(2deg);
-    box-shadow:
-      0 20px 25px -5px rgb(0 0 0 / 0.1),
-      0 8px 10px -6px rgb(0 0 0 / 0.1),
-      0 0 0 1px rgb(236 72 153 / 0.1);
-    border-color: rgb(236 72 153 / 0.2);
+  .card-elegant:hover {
+    border-color: rgba(244, 63, 94, 0.15);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
   }
 
-  /* Bento Grid Card */
-  .bento-card {
-    position: relative;
-    border-radius: 1.5rem;
-    background: linear-gradient(to bottom right, white, rgb(248 250 252));
-    padding: 2rem;
-    border: 1px solid rgb(226 232 240 / 0.6);
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.02),
-      0 1px 3px 0 rgb(0 0 0 / 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .bento-card:hover {
-    border-color: rgb(236 72 153 / 0.3);
-    box-shadow:
-      0 0 0 1px rgb(236 72 153 / 0.1),
-      0 10px 20px -5px rgb(0 0 0 / 0.15);
-  }
-
-  /* Modern Gradient Button */
-  .btn-modern {
-    position: relative;
+  /* Sophisticated Button */
+  .btn-elegant {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    font-weight: 600;
+    padding: 1rem 2.5rem;
+    background: rgb(var(--charcoal));
     color: white;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgb(236 72 153) 0%, rgb(147 51 234) 100%);
-    box-shadow:
-      0 4px 6px -1px rgb(236 72 153 / 0.3),
-      0 2px 4px -2px rgb(236 72 153 / 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .btn-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(135deg, rgb(147 51 234) 0%, rgb(236 72 153) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .btn-modern:hover::before {
-    opacity: 1;
-  }
-
-  .btn-modern:hover {
+  .btn-elegant:hover {
+    background: rgb(var(--rose-600));
     transform: translateY(-2px);
-    box-shadow:
-      0 10px 25px -5px rgb(236 72 153 / 0.5),
-      0 4px 6px -2px rgb(236 72 153 / 0.3);
   }
 
-  /* Glassmorphism 2.0 */
-  .glass-modern {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1rem;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.7) 100%
-    );
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow:
-      0 8px 32px 0 rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  /* Rose Accent Button */
+  .btn-rose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: rgb(var(--rose-500));
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  /* Gradient Text */
-  .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    background-image: linear-gradient(135deg, rgb(236 72 153) 0%, rgb(147 51 234) 100%);
+  .btn-rose:hover {
+    background: rgb(var(--rose-600));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.4);
   }
 
-  /* Modern Badge */
-  .badge-modern {
+  /* Outline Button */
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: rgb(var(--charcoal));
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgb(var(--charcoal));
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-outline:hover {
+    background: rgb(var(--charcoal));
+    color: white;
+  }
+
+  /* Elegant Badge */
+  .badge-elegant {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    background: rgb(var(--rose-50));
+    color: rgb(var(--rose-600));
+    font-size: 0.75rem;
     font-weight: 500;
-    background: linear-gradient(135deg, rgb(236 72 153 / 0.1) 0%, rgb(147 51 234 / 0.1) 100%);
-    border: 1px solid rgb(236 72 153 / 0.2);
-    color: rgb(236 72 153);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgb(var(--rose-100));
   }
 
-  /* Shimmer Effect */
-  .shimmer {
+  /* Rose Gradient Text - subtle */
+  .text-rose-gradient {
+    background: linear-gradient(135deg, rgb(var(--rose-500)) 0%, rgb(var(--mauve-500)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+  }
+
+  /* Section with cream background */
+  .section-cream {
+    background: rgb(var(--cream));
+  }
+
+  /* Section with white background */
+  .section-white {
+    background: white;
+  }
+
+  /* Elegant underline animation */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgb(var(--rose-500));
+    transition: width 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Floating label input */
+  .input-elegant {
+    width: 100%;
+    padding: 1rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .input-elegant:focus {
+    outline: none;
+    border-color: rgb(var(--rose-500));
+  }
+
+  .input-elegant::placeholder {
+    color: rgb(var(--warm-gray));
+    font-weight: 300;
+  }
+
+  /* Quote marks */
+  .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: rgb(var(--rose-200));
+  }
+
+  /* Vertical line accent */
+  .accent-line {
+    width: 1px;
+    background: linear-gradient(180deg, rgb(var(--rose-500)), rgb(var(--mauve-500)));
+  }
+
+  /* Horizontal line accent */
+  .accent-line-h {
+    height: 1px;
+    width: 60px;
+    background: rgb(var(--rose-500));
+  }
+
+  /* Number styling for process steps */
+  .step-number {
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: rgb(var(--rose-200));
+  }
+
+  /* Elegant shadow */
+  .shadow-elegant {
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Image container with elegant border */
+  .image-frame {
     position: relative;
     overflow: hidden;
   }
 
-  .shimmer::after {
+  .image-frame::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
-    animation: shimmer 2s infinite;
-  }
-
-  @keyframes shimmer {
-    100% {
-      left: 100%;
-    }
-  }
-
-  /* Floating Animation */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  .float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  /* Pulse Glow */
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgb(236 72 153 / 0.3);
-    }
-    50% {
-      box-shadow: 0 0 40px rgb(236 72 153 / 0.6);
-    }
-  }
-
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* Grid Pattern Background */
-  .grid-pattern {
-    background-image:
-      linear-gradient(rgb(226 232 240 / 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(226 232 240 / 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  /* Noise Texture */
-  .noise-texture {
-    position: relative;
-  }
-
-  .noise-texture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    inset: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1;
     pointer-events: none;
   }
 }
 
 @layer utilities {
-  .perspective-1000 {
-    perspective: 1000px;
+  /* Custom spacing */
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 
-  .transform-3d {
-    transform-style: preserve-3d;
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
   }
 
-  .backface-hidden {
-    backface-visibility: hidden;
+  /* Letter spacing utilities */
+  .tracking-elegant {
+    letter-spacing: 0.15em;
+  }
+
+  .tracking-wide-elegant {
+    letter-spacing: 0.2em;
   }
 }

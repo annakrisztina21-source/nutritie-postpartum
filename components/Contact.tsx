@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Calendar, Send, Sparkles, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function Contact() {
@@ -27,49 +27,37 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulare trimitere formular - înlocuiește cu logica ta de backend
     setTimeout(() => {
       setSubmitMessage(siteConfig.contactForm.successMessage);
       setIsSubmitting(false);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-
       setTimeout(() => setSubmitMessage(''), 5000);
     }, 1500);
   };
 
   return (
-    <section id="contact" className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white"></div>
-      <div className="absolute inset-0 grid-pattern opacity-30"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-pink-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="contact" className="section-padding section-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex mb-6">
-            <div className="badge-modern shimmer">
-              <Sparkles className="w-4 h-4" />
-              <span>Programare consultație</span>
-            </div>
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="badge-elegant mb-6 inline-block">Contact</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-[rgb(30,30,32)] mb-6">
             {siteConfig.contactForm.title}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <div className="accent-line-h mx-auto mb-6"></div>
+          <p className="text-lg text-[rgb(115,115,115)] leading-relaxed">
             {siteConfig.contactForm.subtitle}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-5 gap-16">
           {/* Contact Form */}
-          <div className="perspective-1000">
-            <div className="card-3d transform-3d">
-              <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          <div className="lg:col-span-3">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid sm:grid-cols-2 gap-8">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-slate-900 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-3">
                     {siteConfig.contactForm.fields.name}
                   </label>
                   <input
@@ -79,14 +67,14 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 focus:outline-none transition-all bg-white/50 backdrop-blur-sm"
-                    placeholder="Numele tău complet"
+                    className="input-elegant"
+                    placeholder="Numele tău"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-slate-900 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-3">
                     {siteConfig.contactForm.fields.email}
                   </label>
                   <input
@@ -96,14 +84,16 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 focus:outline-none transition-all bg-white/50 backdrop-blur-sm"
-                    placeholder="adresa@email.com"
+                    className="input-elegant"
+                    placeholder="email@exemplu.com"
                   />
                 </div>
+              </div>
 
+              <div className="grid sm:grid-cols-2 gap-8">
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-bold text-slate-900 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-3">
                     {siteConfig.contactForm.fields.phone}
                   </label>
                   <input
@@ -113,14 +103,14 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 focus:outline-none transition-all bg-white/50 backdrop-blur-sm"
+                    className="input-elegant"
                     placeholder="07XX XXX XXX"
                   />
                 </div>
 
                 {/* Service */}
                 <div>
-                  <label htmlFor="service" className="block text-sm font-bold text-slate-900 mb-2">
+                  <label htmlFor="service" className="block text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-3">
                     {siteConfig.contactForm.fields.service}
                   </label>
                   <select
@@ -129,7 +119,7 @@ export default function Contact() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 focus:outline-none transition-all bg-white/50 backdrop-blur-sm"
+                    className="input-elegant bg-transparent cursor-pointer"
                   >
                     <option value="">Selectează un serviciu</option>
                     {siteConfig.contactForm.serviceOptions.map((option, index) => (
@@ -139,123 +129,104 @@ export default function Contact() {
                     ))}
                   </select>
                 </div>
+              </div>
 
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-slate-900 mb-2">
-                    {siteConfig.contactForm.fields.message}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 focus:outline-none transition-all resize-none bg-white/50 backdrop-blur-sm"
-                    placeholder="Spune-mi puțin despre situația ta..."
-                  />
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-3">
+                  {siteConfig.contactForm.fields.message}
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5}
+                  className="input-elegant resize-none"
+                  placeholder="Spune-mi puțin despre situația ta..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-rose group disabled:opacity-50"
+              >
+                {isSubmitting ? 'Se trimite...' : siteConfig.contactForm.submitButton}
+                {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />}
+              </button>
+
+              {/* Success Message */}
+              {submitMessage && (
+                <div className="p-4 border-l-2 border-green-500 bg-green-50">
+                  <p className="text-green-800">{submitMessage}</p>
                 </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-modern w-full disabled:opacity-50 disabled:cursor-not-allowed group"
-                >
-                  <span className="relative z-10 flex items-center justify-center">
-                    {isSubmitting ? 'Se trimite...' : siteConfig.contactForm.submitButton}
-                    {!isSubmitting && <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />}
-                  </span>
-                </button>
-
-                {/* Success Message */}
-                {submitMessage && (
-                  <div className="glass-modern px-6 py-4 flex items-center gap-3 shimmer">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                    <p className="text-slate-900 font-medium">{submitMessage}</p>
-                  </div>
-                )}
-              </form>
-            </div>
+              )}
+            </form>
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            {/* Contact Cards */}
-            <div className="bento-card group">
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Phone className="text-pink-600 w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Telefon</h4>
-                  <a href={`tel:${siteConfig.contact.phone}`} className="text-slate-600 hover:text-gradient transition-all font-medium">
-                    {siteConfig.contact.phone}
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="lg:col-span-2">
+            <div className="bg-[rgb(253,251,247)] p-8 lg:p-10 h-full">
+              <h3 className="text-xl font-medium text-[rgb(30,30,32)] mb-8">
+                Informații de contact
+              </h3>
 
-            <div className="bento-card group">
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Mail className="text-purple-600 w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Email</h4>
-                  <a href={`mailto:${siteConfig.contact.email}`} className="text-slate-600 hover:text-gradient transition-all break-all font-medium">
-                    {siteConfig.contact.email}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="bento-card group">
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-500/10 to-green-500/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <MapPin className="text-blue-600 w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Adresă</h4>
-                  <p className="text-slate-600 font-medium">{siteConfig.contact.address}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bento-card group">
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Clock className="text-amber-600 w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Program</h4>
-                  <p className="text-slate-600 font-medium">{siteConfig.contact.schedule}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Calendly Link (if available) */}
-            {siteConfig.contact.calendlyLink && (
-              <div className="card-3d p-6 bg-gradient-to-br from-amber-50 to-orange-50">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Calendar className="text-white w-6 h-6" />
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-4 h-4 text-rose-500" />
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-slate-900 mb-3 text-lg">Programare online</h4>
-                    <a
-                      href={siteConfig.contact.calendlyLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all text-sm group"
-                    >
-                      Alege data și ora
-                      <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  <div>
+                    <div className="text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-1">
+                      Telefon
+                    </div>
+                    <a href={`tel:${siteConfig.contact.phone}`} className="text-[rgb(115,115,115)] hover:text-rose-500 transition-colors">
+                      {siteConfig.contact.phone}
                     </a>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-4 h-4 text-rose-500" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-1">
+                      Email
+                    </div>
+                    <a href={`mailto:${siteConfig.contact.email}`} className="text-[rgb(115,115,115)] hover:text-rose-500 transition-colors break-all">
+                      {siteConfig.contact.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-4 h-4 text-rose-500" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-1">
+                      Locație
+                    </div>
+                    <p className="text-[rgb(115,115,115)]">{siteConfig.contact.address}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-4 h-4 text-rose-500" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium tracking-widest uppercase text-[rgb(30,30,32)] mb-1">
+                      Program
+                    </div>
+                    <p className="text-[rgb(115,115,115)]">{siteConfig.contact.schedule}</p>
+                  </div>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 'use client';
 
-import { ArrowRight, Sparkles, Heart, Star, TrendingUp, Users } from 'lucide-react';
-import { siteConfig } from '@/lib/siteConfig';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -12,121 +11,93 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden noise-texture">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 grid-pattern opacity-50"></div>
+    <section className="relative min-h-screen flex items-center section-white">
+      {/* Subtle background accent */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-rose-50/50 to-transparent pointer-events-none"></div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10 w-full">
-        {/* Header Content */}
-        <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex">
-            <div className="badge-modern shimmer">
-              <Sparkles className="w-4 h-4" />
-              <span>Nutriție inteligentă pentru mame moderne</span>
-            </div>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight max-w-5xl mx-auto">
-            Slăbește{' '}
-            <span className="text-gradient">sănătos</span>
-            {' '}după naștere,{' '}
-            <span className="text-gradient">fără restricții</span>
-          </h1>
-
-          <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Program personalizat de nutriție postpartum, adaptat vieții tale de mamă. Rezultate reale, fără diete drastice.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="btn-modern group relative z-10"
-            >
-              <span className="relative z-10 flex items-center">
-                <Heart className="w-5 h-5 mr-2 fill-current" />
-                Începe Transformarea
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <div className="max-w-xl">
+            {/* Badge */}
+            <div className="mb-8">
+              <span className="badge-elegant">
+                Nutriție Postpartum
               </span>
-            </button>
-
-            <button
-              onClick={() => scrollToSection('servicii')}
-              className="glass-modern px-8 py-4 rounded-full font-semibold text-slate-900 hover:bg-white/95 transition-all"
-            >
-              Vezi Serviciile
-            </button>
-          </div>
-        </div>
-
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
-          {/* Large Feature Card */}
-          <div className="md:col-span-2 md:row-span-2 bento-card group perspective-1000">
-            <div className="transform-3d transition-transform duration-500 group-hover:rotate-y-2">
-              <div className="absolute top-6 right-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center pulse-glow">
-                  <Heart className="w-6 h-6 text-white fill-current" />
-                </div>
-              </div>
-
-              <div className="pt-8">
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">
-                  Plan Personalizat <span className="text-gradient">100%</span>
-                </h3>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                  Fiecare mamă este unică. Primești un plan adaptat stilului tău de viață, preferințelor alimentare și obiectivelor tale.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/50 rounded-2xl p-4 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-gradient mb-1">7-14 zile</div>
-                    <div className="text-sm text-slate-600">Plan alimentar</div>
-                  </div>
-                  <div className="bg-white/50 rounded-2xl p-4 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-gradient mb-1">24/7</div>
-                    <div className="text-sm text-slate-600">Suport online</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative gradient */}
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-full blur-2xl"></div>
             </div>
-          </div>
 
-          {/* Stats Card */}
-          <div className="bento-card group">
-            <div className="text-center">
-              <Users className="w-12 h-12 text-pink-600 mx-auto mb-4" />
-              <div className="text-4xl font-bold text-gradient mb-2">100+</div>
-              <div className="text-slate-600">Mame transformate</div>
-            </div>
-          </div>
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-[rgb(30,30,32)] mb-6 leading-[1.1]">
+              Slăbește{' '}
+              <span className="text-rose-gradient">sănătos</span>
+              {' '}după naștere
+            </h1>
 
-          {/* Rating Card */}
-          <div className="bento-card group">
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
-              <div className="text-4xl font-bold text-gradient mb-2">4.9</div>
-              <div className="text-slate-600">Rating mediu</div>
-            </div>
-          </div>
+            {/* Accent line */}
+            <div className="accent-line-h mb-8"></div>
 
-          {/* Results Card */}
-          <div className="md:col-span-2 bento-card group">
-            <TrendingUp className="w-10 h-10 text-green-600 mb-4" />
-            <h4 className="text-xl font-bold text-slate-900 mb-3">Rezultate Garantate</h4>
-            <p className="text-slate-600">
-              Abordare validată științific, bazată pe nutriție echilibrată și sustenabilitate pe termen lung.
+            {/* Subheadline */}
+            <p className="text-lg text-[rgb(115,115,115)] mb-10 leading-relaxed">
+              Program personalizat de nutriție postpartum, adaptat vieții tale de mamă.
+              Fără diete drastice, fără restricții extreme — doar rezultate reale și sustenabile.
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="btn-rose group"
+              >
+                Începe Transformarea
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => scrollToSection('servicii')}
+                className="btn-outline"
+              >
+                Descoperă Serviciile
+              </button>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-16 pt-8 border-t border-black/5">
+              <div className="flex items-center gap-12">
+                <div>
+                  <div className="text-3xl font-medium text-[rgb(30,30,32)]">100+</div>
+                  <div className="text-sm text-[rgb(115,115,115)] mt-1">Mame ajutate</div>
+                </div>
+                <div className="w-px h-12 bg-black/10"></div>
+                <div>
+                  <div className="text-3xl font-medium text-[rgb(30,30,32)]">4.9</div>
+                  <div className="text-sm text-[rgb(115,115,115)] mt-1">Rating mediu</div>
+                </div>
+                <div className="w-px h-12 bg-black/10"></div>
+                <div>
+                  <div className="text-3xl font-medium text-[rgb(30,30,32)]">5+ ani</div>
+                  <div className="text-sm text-[rgb(115,115,115)] mt-1">Experiență</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Image placeholder */}
+          <div className="relative hidden lg:block">
+            <div className="aspect-[4/5] bg-gradient-to-br from-rose-100 to-purple-50 rounded-sm overflow-hidden image-frame">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/80 flex items-center justify-center">
+                    <span className="text-4xl">👩‍⚕️</span>
+                  </div>
+                  <p className="text-[rgb(115,115,115)] text-sm">
+                    Adaugă fotografia ta profesională
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative element */}
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-rose-200 rounded-sm -z-10"></div>
           </div>
         </div>
       </div>

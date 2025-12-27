@@ -1,89 +1,66 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, HelpCircle, MessageCircle, Sparkles } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faq" className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-white"></div>
-      <div className="absolute inset-0 grid-pattern opacity-30"></div>
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-
-      <div className="max-w-4xl mx-auto relative z-10">
+    <section id="faq" className="section-padding section-cream">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex mb-6">
-            <div className="badge-modern shimmer">
-              <HelpCircle className="w-4 h-4" />
-              <span>Întrebări frecvente</span>
-            </div>
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Răspunsuri la <span className="text-gradient">întrebările</span> tale
+        <div className="text-center mb-16">
+          <span className="badge-elegant mb-6 inline-block">FAQ</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-[rgb(30,30,32)] mb-6">
+            Întrebări frecvente
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Cele mai comune întrebări pe care le primesc de la viitoarele mame.
+          <div className="accent-line-h mx-auto mb-6"></div>
+          <p className="text-lg text-[rgb(115,115,115)] leading-relaxed">
+            Răspunsuri la cele mai comune întrebări pe care le primesc.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-4 mb-12">
+        <div className="space-y-4">
           {siteConfig.faq.map((item, index) => (
             <div
               key={item.id}
-              className={`card-3d overflow-hidden transition-all duration-300 ${
-                openIndex === index ? 'ring-2 ring-pink-500/20' : ''
-              }`}
+              className="card-elegant overflow-hidden"
             >
-              {/* Question Button */}
+              {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex items-center justify-between p-6 text-left group"
               >
-                <div className="flex items-start gap-4 flex-1">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
-                    openIndex === index
-                      ? 'bg-gradient-to-br from-pink-500 to-purple-600'
-                      : 'bg-slate-100 group-hover:bg-slate-200'
-                  }`}>
-                    <MessageCircle className={`w-5 h-5 ${
-                      openIndex === index ? 'text-white' : 'text-slate-600'
-                    }`} />
-                  </div>
-                  <span className="text-lg font-bold text-slate-900 pr-4 group-hover:text-gradient transition-all">
-                    {item.question}
-                  </span>
-                </div>
-                <ChevronDown
-                  className={`flex-shrink-0 text-pink-600 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  size={24}
-                />
+                <span className="text-lg font-medium text-[rgb(30,30,32)] pr-8 group-hover:text-rose-600 transition-colors">
+                  {item.question}
+                </span>
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center group-hover:bg-rose-100 transition-colors">
+                  {openIndex === index ? (
+                    <Minus className="w-4 h-4 text-rose-500" />
+                  ) : (
+                    <Plus className="w-4 h-4 text-rose-500" />
+                  )}
+                </span>
               </button>
 
-              {/* Answer Panel */}
+              {/* Answer */}
               <div
                 className={`overflow-hidden transition-all duration-300 ${
                   openIndex === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
                 <div className="px-6 pb-6">
-                  <div className="pl-14 pr-10">
-                    <div className="glass-modern px-6 py-4">
-                      <p className="text-slate-600 leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
+                  <div className="border-t border-black/5 pt-6">
+                    <p className="text-[rgb(115,115,115)] leading-relaxed">
+                      {item.answer}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -92,34 +69,21 @@ export default function FAQ() {
         </div>
 
         {/* Bottom Note */}
-        <div className="text-center">
-          <div className="bento-card inline-block shimmer">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <p className="text-lg text-slate-900 font-medium mb-1">
-                  Mai ai întrebări?
-                </p>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) {
-                      const offset = 80;
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.pageYOffset - offset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-pink-600 font-bold hover:text-gradient transition-all flex items-center gap-2 group"
-                >
-                  Contactează-mă direct
-                  <ChevronDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className="mt-12 text-center">
+          <p className="text-[rgb(115,115,115)]">
+            Mai ai întrebări?{' '}
+            <button
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="link-underline text-[rgb(30,30,32)] font-medium"
+            >
+              Contactează-mă direct
+            </button>
+          </p>
         </div>
       </div>
     </section>

@@ -1,62 +1,43 @@
 'use client';
 
-import { Instagram, Facebook, Heart, ArrowUp, Sparkles } from 'lucide-react';
+import { Instagram, Facebook, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="relative bg-slate-900 text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950"></div>
-      <div className="absolute inset-0 grid-pattern opacity-10"></div>
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Column */}
+    <footer className="bg-[rgb(30,30,32)] text-white">
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold">{siteConfig.brandName}</h3>
-            </div>
-            <p className="text-slate-400 text-sm mb-6 max-w-md leading-relaxed">
+            <h3 className="text-xl font-medium mb-4">{siteConfig.brandName}</h3>
+            <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-sm">
               {siteConfig.footer.description}
             </p>
 
-            {/* Social Media */}
-            <div className="flex gap-3">
+            {/* Social */}
+            <div className="flex gap-4">
               {siteConfig.social.instagram && (
                 <a
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-xl flex items-center justify-center transition-all hover:scale-110 group"
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-5 h-5 text-slate-400 group-hover:text-pink-500 transition-colors" />
+                  <Instagram className="w-4 h-4" />
                 </a>
               )}
               {siteConfig.social.facebook && (
@@ -64,10 +45,10 @@ export default function Footer() {
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-xl flex items-center justify-center transition-all hover:scale-110 group"
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
                   aria-label="Facebook"
                 >
-                  <Facebook className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                  <Facebook className="w-4 h-4" />
                 </a>
               )}
             </div>
@@ -75,18 +56,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full"></div>
-              Linkuri rapide
+            <h4 className="text-sm font-medium tracking-widest uppercase mb-6">
+              Navigare
             </h4>
             <ul className="space-y-3">
               {siteConfig.footer.quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-slate-400 hover:text-white transition-colors text-sm group flex items-center gap-2"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 group-hover:w-4 transition-all"></span>
                     {link.name}
                   </button>
                 </li>
@@ -94,10 +73,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal Links */}
+          {/* Legal */}
           <div>
-            <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full"></div>
+            <h4 className="text-sm font-medium tracking-widest uppercase mb-6">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -105,9 +83,8 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors text-sm group flex items-center gap-2"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-600 group-hover:w-4 transition-all"></span>
                     {link.name}
                   </a>
                 </li>
@@ -115,35 +92,32 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm text-center md:text-left flex items-center gap-2">
+            <p className="text-white/40 text-sm text-center md:text-left">
               {siteConfig.footer.copyright}
-              <Heart className="w-4 h-4 text-pink-500 fill-pink-500 inline animate-pulse" />
             </p>
 
-            <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-gradient transition-all">
+            <div className="flex items-center gap-6 text-white/40 text-sm">
+              <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white transition-colors">
                 {siteConfig.contact.email}
-              </a>
-              <span className="text-slate-700">|</span>
-              <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-gradient transition-all">
-                {siteConfig.contact.phone}
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to top */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all group z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-rose-500 hover:bg-rose-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all hover:-translate-y-1 z-40"
         aria-label="Scroll to top"
       >
-        <ArrowUp className="w-6 h-6 text-white group-hover:-translate-y-1 transition-transform" />
+        <ArrowUp className="w-5 h-5" />
       </button>
     </footer>
   );
