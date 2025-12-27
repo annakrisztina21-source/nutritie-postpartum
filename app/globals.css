@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FFF7F2;
+    --primary: #E67E5F;
+    --secondary: #2E6F6A;
+    --accent: #F2C14E;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #FFF7F2;
+    color: #1F2937;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
