@@ -44,7 +44,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md'
+          ? 'glass-card shadow-soft'
           : 'bg-transparent'
       }`}
     >
@@ -80,7 +80,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-primary text-white px-6 py-3 rounded-full font-inter font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-md"
+              className="btn-gradient text-white px-6 py-3 rounded-full font-inter font-medium shadow-glow-pink"
             >
               {siteConfig.hero.ctaPrimary}
             </button>
@@ -111,7 +111,7 @@ export default function Header() {
               ))}
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-primary text-white px-6 py-3 rounded-full font-inter font-medium hover:bg-primary/90 transition-all text-center mt-2"
+                className="btn-gradient text-white px-6 py-3 rounded-full font-inter font-medium text-center mt-2"
               >
                 {siteConfig.hero.ctaPrimary}
               </button>
